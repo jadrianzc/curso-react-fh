@@ -12,14 +12,19 @@ const AddCategory = ({ setCategory }) => {
 		e.preventDefault();
 
 		if (inputValue.trim().length > 2) {
-			setCategory((category) => [...category, inputValue]);
+			setCategory((category) => [inputValue, ...category]);
 			setInputValue('');
 		}
 	};
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<input type="textt" placeholder="Categorias" value={inputValue} onChange={handleInputChange} />
+			<input
+				type="textt"
+				placeholder="Categorias"
+				value={inputValue}
+				onChange={handleInputChange}
+			/>
 		</form>
 	);
 };

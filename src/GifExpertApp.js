@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import AddCategory from './components/AddCategory';
+import GiftGrid from './components/GiftGrid';
 
 const GiftExpertApp = () => {
-	const [category, setCategory] = useState(['One Piece', 'Naruto', 'Dragon Ball']);
+	const [category, setCategory] = useState(['One Piece']);
 
 	return (
 		<>
-			<h2>GiftExpertApp</h2>
+			<h2>GifExpertApp</h2>
 			<AddCategory setCategory={setCategory} />
 			<hr />
 			<ol>
 				{category.map((categories) => (
-					<li key={categories}>{categories}</li>
+					<GiftGrid key={categories} categories={categories} />
 				))}
 			</ol>
 		</>
