@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { getGifs } from '../helpers/getGifs';
+import React from 'react';
+import useFeetchGifs from '../hooks/useFeetchGifs';
 import GifGridItem from './GifGridItem';
 
 const GiftGrid = ({ categories }) => {
-	const [images, setImages] = useState([]);
-
-	useEffect(() => {
-		getGifs(categories).then((img) => setImages(img));
-	}, [categories]);
+	const { data: images, loading } = useFeetchGifs(categories);
 
 	return (
 		<>
 			<h3>{categories.toUpperCase()}</h3>
+
+			{loading && <p>Cargando...</p>}
+
 			<div className="card-grid">
 				{images.map((img) => (
 					<GifGridItem key={img.id} {...img} />
